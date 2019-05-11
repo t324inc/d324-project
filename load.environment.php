@@ -11,10 +11,17 @@ use Dotenv\Exception\InvalidPathException;
 /**
  * Load any .env file. See /.env.example.
  */
-$dotenv = new Dotenv(__DIR__);
-try {
-  $dotenv->load();
-}
-catch (InvalidPathException $e) {
-  // Do nothing. Production environments rarely use .env files.
-}
+$dotenv = Dotenv::create(__DIR__);
+$dotenv->load();
+$dotenv->required([
+    'MYSQL_DATABASE', 
+	'MYSQL_USER', 
+	'REDIS_PREFIX', 
+	'DRUPAL_PUBLIC', 
+	'DRUPAL_PRIVATE', 
+	'DRUPAL_TEMP', 
+	'TRUSTED_HOSTS', 
+	'DRUPAL_SITE_MODE'
+]);
+$dotenv->required('REDIS_ENABLED')->isBoolean();
+$dotenv->required('DRUPAL_SITE_MODE')->allowedValues(['dev', 'prod']);
