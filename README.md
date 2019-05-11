@@ -20,7 +20,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drupal-composer/drupal-project:8.x-dev some-dir --no-interaction
+composer create-project BrianT324/drupal-project:8.x-dev some-dir --no-interaction
 ```
 
 With `composer require ...` you can download new dependencies to your 
@@ -39,6 +39,7 @@ all files not excluded by the .gitignore file.
 
 When installing the given `composer.json` some tasks are taken care of:
 
+* Contains a bit of extra magic sauce in the composer.json to make require/update processes faster
 * Drupal will be installed in the `web`-directory.
 * Autoloader is implemented to use the generated composer autoloader in `vendor/autoload.php`,
   instead of the one provided by Drupal (`web/vendor/autoload.php`).
@@ -47,9 +48,13 @@ When installing the given `composer.json` some tasks are taken care of:
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
 * Creates default writable versions of `settings.php` and `services.yml`.
 * Creates `web/sites/default/files`-directory.
+* Creates `private`-directory
+* Creates `tmp`-directory
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 * Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
 * Creates environment variables based on your .env file. See [.env.example](.env.example).
+* Creates public/private/temp directories based on your .env file as well
+* Checks validity of .env file variables, if the file is present
 
 ## Updating Drupal Core
 
