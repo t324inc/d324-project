@@ -1,7 +1,5 @@
 # Composer template for Drupal projects
 
-[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
-
 This project template provides a starter kit for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
@@ -20,16 +18,11 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project BrianT324/drupal-project:8.x-dev some-dir --no-interaction
+composer create-project t324inc/d324-project:8.x-dev web --no-interaction --repository-url=https://t324inc.github.io/satis
 ```
 
 With `composer require ...` you can download new dependencies to your 
 installation.
-
-```
-cd some-dir
-composer require drupal/devel:~1.0
-```
 
 The `composer create-project` command passes ownership of all files to the 
 project that is created. You should create a new git repository, and commit 
@@ -50,8 +43,8 @@ When installing the given `composer.json` some tasks are taken care of:
 * Creates `web/sites/default/files`-directory.
 * Creates `private`-directory
 * Creates `tmp`-directory
-* Latest version of drush is installed locally for use at `vendor/bin/drush`.
-* Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
+* Latest version of drush is installed locally for use at `bin/drush`.
+* Latest version of DrupalConsole is installed locally for use at `bin/drupal`.
 * Creates environment variables based on your .env file. See [.env.example](.env.example).
 * Creates public/private/temp directories based on your .env file as well
 * Checks validity of .env file variables, if the file is present
@@ -137,14 +130,5 @@ Follow the instructions in the [documentation on drupal.org](https://www.drupal.
 
 ### How do I specify a PHP version ?
 
-This project supports PHP 5.6 as minimum version (see [Drupal 8 PHP requirements](https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
+This project supports PHP 7.2 as minimum version (see [Drupal 8 PHP requirements](https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7.2+.
 
-To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
-```json
-"config": {
-    "sort-packages": true,
-    "platform": {
-        "php": "5.6.40"
-    }
-},
-```

@@ -1,16 +1,20 @@
 {
     "name": "t324inc/d324-project",
-    "description": "D324 - An Optimal Drupal 8 Project by T324",
+    "description": "D324 Project Template - An Optimal Drupal 8 Project by T324",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "Brian Nowell",
+            "name": "T324",
             "homepage": "https://www.t324.com",
             "role": "Maintainer"
         }
     ],
     "repositories": {
+        "t324": {
+            "type": "composer",
+            "url": "https://t324inc.github.io/satis/"
+        },
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
@@ -23,18 +27,18 @@
     "require": {
         "php": ">=7.2",
         "composer/installers": "^1.2",
+        "oomphinc/composer-installers-extender": "~1.0",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
+        "drupal/drupal-library-installer-plugin": "^0.3",
         "drupal/console": "^1.0.2",
-        "drupal/core": "^8.7.0",
+        "drupal/core": "^8.7.1",
         "drush/drush": "^9.0.0",
         "vlucas/phpdotenv": "^3.3",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
-        "zaporylie/composer-drupal-optimizations": "^1.1"
-    },
-    "require-dev": {
-        "webflo/drupal-core-require-dev": "^8.7.1"
+        "zaporylie/composer-drupal-optimizations": "^1.1",
+        "t324inc/d324": "8.7.x-dev"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -42,58 +46,68 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true,
-        "optimize-autoloader": true
+        "bin-dir": "bin/",
+        "secure-http": false,
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "drupal/core": "dist"
+        }
     },
     "autoload": {
-        "classmap": [
-            "scripts/composer/ScriptHandler.php"
-        ],
         "files": [
             "load.environment.php"
         ]
     },
     "scripts": {
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "D324\\composer\\ScriptHandler::createRequiredFiles",
+            "D324\\composer\\ScriptHandler::removeGitDirectories",
+            "@composer drupal-scaffold"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ]
+            "D324\\composer\\ScriptHandler::createRequiredFiles",
+            "D324\\composer\\ScriptHandler::removeGitDirectories"
+        ],
+        "post-drupal-scaffold-cmd": ["D324\\composer\\ScriptHandler::postDrupalScaffoldProcedure"]
     },
     "extra": {
         "web/profiles/{$name}": ["type:drupal-profile"],
-        "composer-exit-on-patch-failure": true,
-        "patchLevel": {
-            "drupal/core": "-p2"
-        },
         "installer-types": [
             "npm-asset",
             "bower-asset"
         ],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
+            "web/profiles/{$name}": ["type:drupal-profile"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "web/libraries/slick": ["npm-asset/slick-carousel"],
             "web/libraries/{$name}": [
                 "type:drupal-library",
                 "type:npm-asset",
                 "type:bower-asset"
             ],
-            "web/profiles/{$name}": ["type:drupal-profile"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/Commands/{$name}": ["type:drupal-drush"]
+        },
+        "drupal-libraries": {
+            "library-directory": "web/libraries",
+            "libraries": [
+                {"name": "dropzone","package": "npm-asset/dropzone"},
+                {"name": "blazy", "package": "npm-asset/blazy"},
+                {"name": "slick", "package": "npm-asset/slick-carousel"}
+            ]
         },
         "drupal-scaffold": {
             "initial": {
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
             }
+        },
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
         }
     }
 }
