@@ -1,4 +1,4 @@
-# Composer template for Drupal projects
+# Composer template for D324 projects
 
 This project template provides a starter kit for managing your site
 dependencies with [Composer](https://getcomposer.org/).
