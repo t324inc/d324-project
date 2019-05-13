@@ -72,6 +72,9 @@
         "post-drupal-scaffold-cmd": ["D324\\composer\\ScriptHandler::postDrupalScaffoldProcedure"]
     },
     "extra": {
+        "branch-alias": {
+            "dev-8.x-7.x": "8.7.x-dev"
+        },
         "web/profiles/{$name}": ["type:drupal-profile"],
         "installer-types": [
             "npm-asset",
