@@ -38,7 +38,8 @@
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "zaporylie/composer-drupal-optimizations": "^1.1",
-        "t324inc/d324": "8.7.x-dev"
+        "t324inc/d324": "8.7.x-dev",
+        "t324inc/d324-updater": "8.7.x-dev"
     },
     "conflict": {
         "drupal/drupal": "*"
