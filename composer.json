@@ -79,13 +79,19 @@
         "web/profiles/{$name}": ["type:drupal-profile"],
         "installer-types": [
             "npm-asset",
-            "bower-asset"
+            "bower-asset",
+            "d324-drupal-module",
+            "d324-drupal-theme"
         ],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/profiles/{$name}": ["type:drupal-profile"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/modules/d324/{$name}": ["type:d324-drupal-module"],
+            "web/modules/custom/{$name}": ["type:custom-drupal-module"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "web/themes/d324/{$name}": ["type:d324-drupal-theme"],
+            "web/themes/custom/{$name}": ["type:custom-drupal-theme"],
             "web/libraries/slick": ["npm-asset/slick-carousel"],
             "web/libraries/{$name}": [
                 "type:drupal-library",
