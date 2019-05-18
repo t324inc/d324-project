@@ -76,7 +76,6 @@
         "branch-alias": {
             "dev-8.x": "8.x-dev"
         },
-        "web/profiles/{$name}": ["type:drupal-profile"],
         "installer-types": [
             "npm-asset",
             "bower-asset"
@@ -85,8 +84,8 @@
             "web/core": ["type:drupal-core"],
             "web/profiles/{$name}": ["type:drupal-profile"],
             "web/themes/d324/{$name}": ["t324inc/d324theme"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/modules/d324/{$name}": ["vendor:t324inc"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/modules/custom/{$name}": ["type:custom-drupal-module"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "web/themes/custom/{$name}": ["type:custom-drupal-theme"],
