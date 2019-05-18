@@ -84,7 +84,7 @@
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/profiles/{$name}": ["type:drupal-profile"],
-            "web/themes/d324/{$name}": ["name:t324inc/d324theme"],
+            "web/themes/d324/{$name}": ["t324inc/d324theme"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/modules/d324/{$name}": ["vendor:t324inc"],
             "web/modules/custom/{$name}": ["type:custom-drupal-module"],
