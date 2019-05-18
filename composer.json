@@ -45,6 +45,7 @@
         "drupal/drupal": "*"
     },
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin/",
         "secure-http": false,
