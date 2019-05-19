@@ -18,8 +18,10 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project t324inc/d324-project:8.x-dev web --no-interaction --repository-url=https://t324inc.github.io/satis
+composer create-project t324inc/d324-project:8.x-dev some-install-dir --no-interaction --repository-url=https://t324inc.github.io/satis
 ```
+
+That will install a new D324 website project into the 'some-install-dir' directory.  The webroot will be location at some-install-dir/web
 
 With `composer require ...` you can download new dependencies to your 
 installation.
