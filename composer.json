@@ -32,7 +32,6 @@
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/drupal-library-installer-plugin": "^0.3",
         "drupal/console": "^1.0.2",
-        "drupal/core": "^8.7.1",
         "drush/drush": "^9.0.0",
         "vlucas/phpdotenv": "^3.3",
         "webflo/drupal-finder": "^1.0.0",
