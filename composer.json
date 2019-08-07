@@ -52,6 +52,7 @@
         "bin-dir": "bin/",
         "secure-http": false,
         "optimize-autoloader": true,
+        "sort-packages": true,
         "preferred-install": {
             "drupal/core": "dist"
         }
