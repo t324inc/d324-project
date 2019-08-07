@@ -40,6 +40,9 @@
         "t324inc/d324": "8.7.x-dev",
         "t324inc/d324-updater": "8.7.x-dev"
     },
+    "require-dev": {
+        "webflo/drupal-core-require-dev": "^8.7.0"
+    },
     "conflict": {
         "drupal/drupal": "*"
     },
